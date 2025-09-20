@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-Pesa Reversal | Yatta Catering Services</title>
+    <style>
+        :root {
+            --primary-color: #0b6623; /* Darker green for better contrast */
+            --secondary-color: #f8f9fa;
+            --text-color: #333333;
+            --border-radius: 12px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            font-family: "Rubik", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            width: 350px;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            margin-bottom: 25px;
+        }
+        
+        .logo img {
+            border-radius: var(--border-radius);
+            width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .form-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .input-container {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(11, 102, 35, 0.1);
+        }
+        
+        .input-field::placeholder {
+            color: #aaa;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #094d1c;
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .form-footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">
+            <img src="./images/mpesa.png" alt="M-Pesa Logo">
+            <h1 class="form-title">Transaction Reversal</h1>
+        </div>
+       
+        <form action="./Reversals.php" method="POST">
+            <div class="input-container">
+                <label for="mpesa_code" class="input-label">M-Pesa Transaction Code</label>
+                <input type="text" id="mpesa_code" class="input-field" name="mpesa_code" 
+                       placeholder="e.g. ODE45HJ892" required>
+            </div>
+         
+            <button type="submit" class="submit-btn" name="submit" value="submit">
+                Reverse Transaction
+            </button>
+            
+            <p class="form-footer">
+                Enter the M-Pesa transaction code to initiate reversal
+            </p>
+        </form>
+    </div>
+</body>
+</html>

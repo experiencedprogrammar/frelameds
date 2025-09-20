@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .reset-password-container {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .reset-password-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #f8fafc;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .input-group-text {
+            background: #334155;
+            border: none;
+            color: #94a3b8;
+        }
+        .form-control {
+            background: #334155;
+            border: none;
+            color: white;
+        }
+        .form-control:focus {
+            background: #475569;
+            color: white;
+            box-shadow: none;
+        }
+        .btn-primary {
+            background: #3b82f6;
+            border: none;
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+        }
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        .alert {
+            margin-top: 1rem;
+        }
+        .back-to-login {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .back-to-login a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .back-to-login a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="reset-password-container">
+        <h2>Reset Password</h2>
+        <form id="resetPasswordForm">
+            <!-- Email Field with Icon -->
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-envelope"></i> <!-- Email Icon -->
+                </span>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" autocomplete="off" required>
+            </div>
+
+            <!-- New Password Field with Icon -->
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-lock"></i> <!-- Password Icon -->
+                </span>
+                <input type="password" class="form-control" id="newPassword" placeholder="Enter new password" autocomplete="off" required>
+            </div>
+
+            <!-- Confirm New Password Field with Icon -->
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-lock"></i> <!-- Password Icon -->
+                </span>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password" autocomplete="off" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Reset Password</button>
+            <div class="back-to-login">
+                <a href="login.html">Back to Login</a>
+            </div>
+        </form>
+        <div id="errorMessage" class="alert alert-danger mt-3" style="display: none;"></div>
+        <div id="successMessage" class="alert alert-success mt-3" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById("resetPasswordForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            const email = document.getElementById("email").value;
+            const newPassword = document.getElementById("newPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Validate inputs
+            if (!email || !newPassword || !confirmPassword) {
+                showErrorMessage("All fields are required.");
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                showErrorMessage("Passwords do not match.");
+                return;
+            }
+
+            // Simulate a successful password reset
+            showSuccessMessage("Password reset successfully! Redirecting to login page...");
+
+            // Redirect to login page after 3 seconds
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 3000);
+        });
+
+        // Function to show error messages
+        function showErrorMessage(message) {
+            const errorMessage = document.getElementById("errorMessage");
+            errorMessage.textContent = message;
+            errorMessage.style.display = "block";
+
+            // Hide success message if visible
+            const successMessage = document.getElementById("successMessage");
+            successMessage.style.display = "none";
+        }
+
+        // Function to show success messages
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById("successMessage");
+            successMessage.textContent = message;
+            successMessage.style.display = "block";
+
+            // Hide error message if visible
+            const errorMessage = document.getElementById("errorMessage");
+            errorMessage.style.display = "none";
+        }
+    </script>
+</body>
+</html>

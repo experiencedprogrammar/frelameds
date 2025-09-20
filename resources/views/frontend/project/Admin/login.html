@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #f8fafc;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .input-group-text {
+            background: #334155;
+            border: none;
+            color: #94a3b8;
+        }
+        .form-control {
+            background: #334155;
+            border: none;
+            color: white;
+        }
+        .form-control:focus {
+            background: #475569;
+            color: white;
+            box-shadow: none;
+        }
+        .btn-primary {
+            background: #3b82f6;
+            border: none;
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+        }
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        .alert {
+            margin-top: 1rem;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .forgot-password a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        /* Eye icon styling */
+        .password-toggle {
+            cursor: pointer;
+            color: #94a3b8;
+        }
+        .password-toggle:hover {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <!-- Form submits to login.php -->
+        <form id="loginForm" action="login.php" method="POST">
+            <!-- Username Field with Icon -->
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-user"></i> <!-- User Icon -->
+                </span>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autocomplete="off" required>
+            </div>
+
+            <!-- Password Field with Icon and Eye Toggle -->
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-lock"></i> <!-- Password Icon -->
+                </span>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" autocomplete="off" required>
+                <span class="input-group-text password-toggle" onclick="togglePassword()">
+                    <i class="fas fa-eye"></i> <!-- Eye Icon -->
+                </span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="forgot-password">
+                <a href="request-code.html">Forgot Password?</a>
+            </div>
+        </form>
+        <!-- Error message will be displayed here -->
+        <div id="errorMessage" class="alert alert-danger mt-3" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Function to toggle password visibility
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const eyeIcon = document.querySelector(".password-toggle i");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text"; // Show password
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash"); // Change icon to "eye-slash"
+            } else {
+                passwordField.type = "password"; // Hide password
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye"); // Change icon to "eye"
+            }
+        }
+    </script>
+</body>
+</html>

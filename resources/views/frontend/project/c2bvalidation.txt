@@ -1,0 +1,43 @@
+{
+  "TransactionType": "Pay Bill",
+  "TransID": "NLJ41HAY6Q",
+  "TransTime": "20230801120000",
+  "TransAmount": "100",
+  "BusinessShortCode": "174379",
+  "BillRefNumber": "INV12345",
+  "InvoiceNumber": "",
+  "OrgAccountBalance": "150000",
+  "ThirdPartyTransID": "",
+  "MSISDN": "254712345678",
+  "FirstName": "John",
+  "MiddleName": "Doe",
+  "LastName": "Smith"
+}{
+  "TransactionType": "Pay Bill",
+  "TransID": "NLJ41HAY6Q",
+  "TransTime": "20230801120000",
+  "TransAmount": "100",
+  "BusinessShortCode": "174379",
+  "BillRefNumber": "INV12345",
+  "InvoiceNumber": "",
+  "OrgAccountBalance": "150000",
+  "ThirdPartyTransID": "",
+  "MSISDN": "254712345678",
+  "FirstName": "John",
+  "MiddleName": "Doe",
+  "LastName": "Smith"
+}{
+  "TransactionType": "Pay Bill",
+  "TransID": "NLJ41HAY6Q",
+  "TransTime": "20230801120000",
+  "TransAmount": "100",
+  "BusinessShortCode": "174379",
+  "BillRefNumber": "INV12345",
+  "InvoiceNumber": "",
+  "OrgAccountBalance": "150000",
+  "ThirdPartyTransID": "",
+  "MSISDN": "254712345678",
+  "FirstName": "John",
+  "MiddleName": "Doe",
+  "LastName": "Smith"
+}

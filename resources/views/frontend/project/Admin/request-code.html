@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Verification Code</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .request-code-container {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .request-code-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #f8fafc;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .input-group-text {
+            background: #334155;
+            border: none;
+            color: #94a3b8;
+        }
+        .form-control {
+            background: #334155;
+            border: none;
+            color: white;
+        }
+        .form-control:focus {
+            background: #475569;
+            color: white;
+            box-shadow: none;
+        }
+        .btn-primary {
+            background: #3b82f6;
+            border: none;
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+        }
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        .alert {
+            margin-top: 1rem;
+            display: none;
+        }
+        .back-to-login {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .back-to-login a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .back-to-login a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="request-code-container">
+        <h2>Request Verification Code</h2>
+
+        <!-- Form -->
+        <form id="requestCodeForm">
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Code</button>
+
+            <div class="back-to-login">
+                <a href="login.html">Back to Login</a>
+            </div>
+
+            <!-- Message Display -->
+            <div id="message" class="alert"></div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("requestCodeForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            let email = document.getElementById("email").value;
+            let formData = new FormData();
+            formData.append("email", email);
+
+            fetch("request-code.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                let messageDiv = document.getElementById("message");
+                if (data.success) {
+                    messageDiv.className = "alert alert-success";
+                    messageDiv.innerHTML = "Verification code sent successfully! Redirecting...";
+                    messageDiv.style.display = "block";
+
+                    setTimeout(() => {
+                        window.location.href = "verify_code.html";
+                    }, 2000);
+                } else {
+                    messageDiv.className = "alert alert-danger";
+                    messageDiv.innerHTML = data.error;
+                    messageDiv.style.display = "block";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
+</body>
+</html>

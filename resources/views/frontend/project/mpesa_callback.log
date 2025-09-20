@@ -1,0 +1,34 @@
+[2025-04-06 14:01:06] {
+  "TransactionType": "Pay Bill",
+  "TransID": "NEF41HAY6Q",
+  "TransTime": "20230805151500",
+  "TransAmount": "250.00",
+  "BusinessShortCode": "174379",
+  "BillRefNumber": "ORDER123",
+  "MSISDN": "254712345678",
+  "OrgAccountBalance": "5000.00",
+  "KYCInfo": [
+    {"KYCName": "[Personal Details][First Name]", "KYCValue": "Jane"},
+    {"KYCName": "[Personal Details][Middle Name]", "KYCValue": "Wangui"},
+    {"KYCName": "[Personal Details][Last Name]", "KYCValue": "Kamau"}
+  ]
+}
+[2025-04-06 14:01:27] {
+  "Body": {
+    "stkCallback": {
+      "MerchantRequestID": "29115-34620561-1",
+      "CheckoutRequestID": "ws_CO_050820231510440123456789",
+      "ResultCode": 0,
+      "ResultDesc": "The service request is processed successfully.",
+      "CallbackMetadata": {
+        "Item": [
+          {"Name": "Amount", "Value": 150.00},
+          {"Name": "MpesaReceiptNumber", "Value": "RD35GHF12K"},
+          {"Name": "Balance", "Value": 4500.00},
+          {"Name": "TransactionDate", "Value": 20230805151045},
+          {"Name": "PhoneNumber", "Value": 254712345678}
+        ]
+      }
+    }
+  }
+}
